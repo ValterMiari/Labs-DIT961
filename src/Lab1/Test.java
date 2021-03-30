@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Test {
     private static Bench.Function<int[], int[]> algorithm =
-        // Change to Lab1.Lab1.Bench.quickSort or Lab1.Lab1.Bench.mergeSort as appropriate.
-        Bench.insertionSort;
+            // Change to Lab1.Lab1.Bench.quickSort or Lab1.Lab1.Bench.mergeSort as appropriate.
+            Bench.insertionSort;
 
     private static boolean check(int[] array) {
         int[] reference = Arrays.copyOf(array, array.length);
@@ -14,7 +14,7 @@ public class Test {
 
         try {
             result = algorithm.apply(Arrays.copyOf(array, array.length));
-        } catch (Exception|StackOverflowError e) {
+        } catch (Exception | StackOverflowError e) {
             failed(array, reference);
             System.out.println("Threw exception:");
             e.printStackTrace(System.out);
@@ -45,10 +45,10 @@ public class Test {
             result.append(array[i]);
         }
         result.append("}");
-        
+
         return result.toString();
     }
-    
+
     public static void main(String[] args) {
         for (int size = 0; ; size++) {
             System.out.printf("Testing on arrays of size %d...\n", size);

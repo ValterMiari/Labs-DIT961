@@ -8,13 +8,17 @@ package Lab1;//
 import java.util.*;
 
 public class Bench {
-    /** Main function **/
+    /**
+     * Main function
+     **/
 
     public static void main(final String[] args) {
         executionTimeReport();
     }
 
-    /** Lab1.Test data generator **/
+    /**
+     * Lab1.Test data generator
+     **/
 
     // Generates a random array of size 'size'.
     // Part of the array is sorted, while the rest is chosen uniformly
@@ -39,9 +43,12 @@ public class Bench {
         return sample;
     }
 
-    /** Auxiliary code, that measures performance of sorting algorithms **/
+    /**
+     * Auxiliary code, that measures performance of sorting algorithms
+     **/
 
-    private static int[] SAMPLE_SIZES = new int[] { 10, 30, 100, 300, 1000, 3000, 10000, 30000, 100000 };
+    private static int[] SAMPLE_SIZES = new int[]{10, 30, 100, 300, 1000, 3000, 10000, 30000, 100000};
+
     private static void executionTimeReport() {
         for (int size : SAMPLE_SIZES) {
             executionTimeReport(size);
@@ -53,21 +60,24 @@ public class Bench {
     }
 
     public static Function<int[], int[]> insertionSort = new Function<int[], int[]>() {
-        @Override public int[] apply(int[] array) {
+        @Override
+        public int[] apply(int[] array) {
             Lab1.insertionSort(array);
             return array;
         }
     };
 
     public static Function<int[], int[]> quickSort = new Function<int[], int[]>() {
-        @Override public int[] apply(int[] array) {
+        @Override
+        public int[] apply(int[] array) {
             Lab1.quickSort(array);
             return array;
         }
     };
 
     public static Function<int[], int[]> mergeSort = new Function<int[], int[]>() {
-        @Override public int[] apply(int[] array) {
+        @Override
+        public int[] apply(int[] array) {
             return Lab1.mergeSort(array);
         }
     };
@@ -92,7 +102,7 @@ public class Bench {
         // times and take the smallest measured runtime. This avoids
         // freakish results due to e.g. the garbage collector kicking
         // in at the wrong time.
-        
+
         // Minimum acceptable value for total time.
         final long target = 10000000;
         // How many times to re-measure the algorithm once it hits the
@@ -107,7 +117,7 @@ public class Bench {
         // How many times we've measured after hitting the target time.
         int lives = MAX_LIVES;
         try {
-            while(true) {
+            while (true) {
                 // Build the input arrays in advance to avoid memory
                 // allocation during testing.
                 int[][] inputs = new int[repetitions][];
@@ -126,11 +136,12 @@ public class Bench {
 
                 // If the algorithm is really slow, we don't
                 // need to measure too carefully
-                if (repetitions == 1 && runtime >= 30*target)
+                if (repetitions == 1 && runtime >= 30 * target)
                     break;
                 if (runtime >= target) {
                     // Ran for long enough - reduce number of lives by one.
-                    if (lives == 0) break; else lives--;
+                    if (lives == 0) break;
+                    else lives--;
                 } else {
                     // Didn't run for long enough.
                     // Increase number of repetitions to try to hit
@@ -153,7 +164,7 @@ public class Bench {
         int[] reference = Arrays.copyOf(input, input.length);
         Arrays.sort(reference);
         if (Arrays.equals(result, reference)) {
-            return String.format("%6f", (double)runtime / ((long)repetitions * 1000000));
+            return String.format("%6f", (double) runtime / ((long) repetitions * 1000000));
         } else {
             return "INCORRECT";
         }
@@ -165,23 +176,23 @@ public class Bench {
         int[] randomSample = generateSample(size, 100);
 
         System.out.println(String.format(
-            "Arrays of length %d\n" +
-            "=================================================================\n" +
-            "Algorithm      | %14s | %14s | %14s\n" +
-            "Insertion sort | %14s | %14s | %14s\n" +
-            "Quicksort      | %14s | %14s | %14s\n" +
-            "Merge sort     | %14s | %14s | %14s\n",
-            size,
-            "Random", "95% sorted", "Sorted",
-            execute(insertionSort, randomSample),
-            execute(insertionSort, partiallySortedSample),
-            execute(insertionSort, sortedSample),
-            execute(quickSort,  randomSample),
-            execute(quickSort,  partiallySortedSample),
-            execute(quickSort,  sortedSample),
-            execute(mergeSort,  randomSample),
-            execute(mergeSort,  partiallySortedSample),
-            execute(mergeSort,  sortedSample)
+                "Arrays of length %d\n" +
+                        "=================================================================\n" +
+                        "Algorithm      | %14s | %14s | %14s\n" +
+                        "Insertion sort | %14s | %14s | %14s\n" +
+                        "Quicksort      | %14s | %14s | %14s\n" +
+                        "Merge sort     | %14s | %14s | %14s\n",
+                size,
+                "Random", "95% sorted", "Sorted",
+                execute(insertionSort, randomSample),
+                execute(insertionSort, partiallySortedSample),
+                execute(insertionSort, sortedSample),
+                execute(quickSort, randomSample),
+                execute(quickSort, partiallySortedSample),
+                execute(quickSort, sortedSample),
+                execute(mergeSort, randomSample),
+                execute(mergeSort, partiallySortedSample),
+                execute(mergeSort, sortedSample)
         ));
     }
 }

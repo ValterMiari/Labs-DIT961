@@ -1,10 +1,11 @@
 package Lab1;
 
 public class Lab1 {
-    /** Sorting algorithms **/
+    /**
+     * Sorting algorithms
+     **/
 
     // Insertion sort.
-
     public static void insertionSort(int[] array) {
         throw new UnsupportedOperationException();
     }
