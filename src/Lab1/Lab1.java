@@ -7,7 +7,20 @@ public class Lab1 {
 
     // Insertion sort.
     public static void insertionSort(int[] array) {
-        throw new UnsupportedOperationException();
+        for (int i = 1; i < array.length; i++) {
+            int checkVal = array[i];
+            int j;
+
+            for (j = i-1; j >= 0; j--) {
+                if (array[j] > checkVal) {
+                    array[j + 1] = array[j];
+                }
+                else {
+                    break;
+                }
+            }
+            array[j + 1] = checkVal;
+        }
     }
 
     // Quicksort.
