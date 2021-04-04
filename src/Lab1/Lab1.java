@@ -1,9 +1,12 @@
 package Lab1;
 
+import java.util.Random;
+
 public class Lab1 {
     /**
      * Sorting algorithms
      **/
+    public static Random random = new Random();
 
     // Insertion sort.
     public static void insertionSort(int[] array) {
@@ -26,17 +29,40 @@ public class Lab1 {
     // Quicksort.
 
     public static void quickSort(int[] array) {
-        throw new UnsupportedOperationException();
+        int low = 0;
+        int high = array.length - 1;
+        quickSort(array, low, high);
     }
 
     // Quicksort part of an array
-    private static void quickSort(int[] array, int begin, int end) {
+    private static void quickSort(int[] array, int low, int high) {
+        if (low < high) {
+            int partitionIndex = partition(array, low, high);
+            quickSort(array, low, partitionIndex - 1);
+            quickSort(array, partitionIndex + 1, high);
+        }
     }
 
     // Partition part of an array, and return the index where the pivot
     // ended up.
-    private static int partition(int[] array, int begin, int end) {
-        throw new UnsupportedOperationException();
+    private static int partition(int[] array, int low, int high) {
+        int index = Math.max(random.nextInt(high), low);
+        swap(array, index, low);
+        int pivot = array[low];
+        int l = low + 1; int h = high;
+
+        while (l <= h) {
+            while (array[l] < pivot)
+                l++;
+            while (array[h] > pivot)
+                h--;
+            if (l < h) {
+                swap(array, l, h);
+                l++; h--;
+            }
+        }
+        swap(array, low, h);
+        return h;
     }
 
     // Swap two elements in an array
