@@ -49,16 +49,18 @@ public class Lab1 {
         int index = Math.max(random.nextInt(high), low);
         swap(array, index, low);
         int pivot = array[low];
-        int l = low + 1; int h = high;
+        int l = low + 1;
+        int h = high;
 
         while (l <= h) {
-            while (array[l] < pivot)
+            while (l <= high && array[l] < pivot)
                 l++;
             while (array[h] > pivot)
                 h--;
-            if (l < h) {
+            if (l <= h) {
                 swap(array, l, h);
-                l++; h--;
+                l++;
+                h--;
             }
         }
         swap(array, low, h);

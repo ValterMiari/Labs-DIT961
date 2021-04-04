@@ -5,7 +5,7 @@ import java.util.*;
 public class Test {
     private static Bench.Function<int[], int[]> algorithm =
             // Change to Lab1.Lab1.Bench.quickSort or Lab1.Lab1.Bench.mergeSort as appropriate.
-            Bench.insertionSort;
+            Bench.quickSort;
 
     private static boolean check(int[] array) {
         int[] reference = Arrays.copyOf(array, array.length);
