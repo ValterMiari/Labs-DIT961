@@ -46,11 +46,14 @@ public class Lab1 {
     // Partition part of an array, and return the index where the pivot
     // ended up.
     private static int partition(int[] array, int low, int high) {
+        // Random number in scope
         int index = Math.max(random.nextInt(high), low);
+        // Swap the lowest index in scope with the random index
         swap(array, index, low);
+        // Assign the random element from the array to the variable pivot
         int pivot = array[low];
-        int l = low + 1;
-        int h = high;
+        // The left pointer "l" moves one step forward because of the pivot element being the first in scope
+        int l = low + 1, h = high;
 
         while (l <= h) {
             while (l <= high && array[l] < pivot)
@@ -63,6 +66,7 @@ public class Lab1 {
                 h--;
             }
         }
+        // Swap the pivot element with the right pointer "h" such that the pivot element gets placed correctly
         swap(array, low, h);
         return h;
     }
