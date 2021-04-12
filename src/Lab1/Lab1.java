@@ -46,7 +46,7 @@ public class Lab1 {
     // Partition part of an array, and return the index where the pivot
     // ended up.
     private static int partition(int[] array, int low, int high) {
-        // Random number in scope
+        // Random index in scope
         int index = Math.max(random.nextInt(high), low);
         // Swap the lowest index in scope with the random index
         swap(array, index, low);
@@ -81,16 +81,49 @@ public class Lab1 {
     // Mergesort.
 
     public static int[] mergeSort(int[] array) {
-        throw new UnsupportedOperationException();
+        if (array.length < 1)
+            return array;
+        int first = 0;
+        int last = array.length - 1;
+        return mergeSort(array, first, last);
     }
 
-    // Mergesort part of an array
-    private static int[] mergeSort(int[] array, int begin, int end) {
-        throw new UnsupportedOperationException();
+    public static int[] mergeSort(int[] array, int first, int last) {
+
+        if (first == last) {
+            return new int[]{array[first]};
+        }
+        int m = first + (last - first) / 2;
+        int[] left = mergeSort(array, first, m);
+        int[] right = mergeSort(array, m + 1, last);
+        return merge(left, right);
+
     }
 
-    // Merge two sorted arrays into one
-    private static int[] merge(int[] left, int[] right) {
-        throw new UnsupportedOperationException();
+    public static int[] merge(int[] left, int[] right) {
+
+        int i = 0;
+        int j = 0;
+        int n = 0;
+        int[] merged = new int[left.length + right.length];
+
+        while (i < left.length && j < right.length) {
+            if (left[i] <= right[j]) {
+                merged[n] = left[i];
+                i++;
+            } else {
+                merged[n] = right[j];
+                j++;
+            }
+            n++;
+        }
+
+        while (i < left.length) {
+            merged[n++] = left[i++];
+        }
+        while (j < right.length) {
+            merged[n++] = right[j++];
+        }
+        return merged;
     }
 }
