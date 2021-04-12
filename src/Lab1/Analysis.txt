@@ -1,0 +1,27 @@
+Sorting
+
+Random:
+Insertion sort är den snabbaste algoritmen fram tills input storlek n = 100. Efter det är Merge sort snabbast, fram tills n = 3000, då Quicksort är den snabbaste för all input n > 3000.
+
+95% sorted:
+Insertion sort är den snabbaste algoritmen i detta fall då input storlek n <= 3000. Efter detta är Merge sort och Quicksort ungefär lika snabba, där stickprov från bench scoren visar liknande resultat för båda algoritmerna, där den ena eller den andra är snabbare.
+
+Sorted:
+När input array:en är sorterad är Insertion sort snabbast och blir snabbare för varje ökning av n, relativt till de andra två algoritmerna.
+
+Vilken algoritm är bäst lämpad för de olika typerna av test data?
+
+Som redogörelsen ovan indikerar så är Quicksort bäst då in datan är slumpmässig och antar en storlek större än 300, vilken den i flesta fall är.
+
+Är inputen sorterad till 95% är det i de flesta fall bäst att välja Quicksort eller Merge sort, förutsatt att input storleken är över 10000. Skulle input storleken alltid vara mindre än 10000 är Insertion sort bättre än Quicksort, men det är en marginell skillnad.
+Merge sort kan föredras över Quicksort när inputen är 95% sorterad, då Merge sort blir avsevärt snabbare än Quicksort ju närmare man kommer en fullt sorterad lista.
+
+När listan är sorterad är Insertion sort snabbast som beskrivet ovan.
+
+Vilken algoritm ska du välja om du inte vet något om test-datan?
+
+Quicksort är den mest effektiva listan i de flesta fallen. Det vill säga; den är både bra på små som stora input data, där den blir avsevärt mycket bättre ju större inputen blir.
+
+Under vilka omständigheter borde en viss algoritm undvikas helt och hållet?
+
+Insertion sort skall alltid undvikas om du vet att input storleken är större än ~ 2000, då den antar O(n^2) för större input, vilket kan bli extremt ineffektivt.  Detta är med förutsättningen att inputen inte är till 99% sorterad för större input, då den i det fallet har tidskomplexitet O(n) och kan vara snabbare än både Quicksort och Merge sort. Detta är förstås ett väldigt specifikt fall, men det är värt att tas upp, då förändringen av effektiviteten är väldigt mycket snabbare.
