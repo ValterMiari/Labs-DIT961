@@ -47,7 +47,7 @@ public class Bench {
      * Auxiliary code, that measures performance of sorting algorithms
      **/
 
-    private static int[] SAMPLE_SIZES = new int[]{10, 30, 100, 300, 1000, 3000, 10000, 30000, 100000};
+    private static int[] SAMPLE_SIZES = new int[]{10, 30, 100, 300, 1000, 2000, 2500, 3000, 10000, 30000, 100000, 150000, 200000, 400000, 800000, 1000000};
 
     private static void executionTimeReport() {
         for (int size : SAMPLE_SIZES) {
@@ -174,25 +174,47 @@ public class Bench {
         int[] sortedSample = generateSample(size, 0);
         int[] partiallySortedSample = generateSample(size, 5);
         int[] randomSample = generateSample(size, 100);
+        if (size <= 100000) {
+            System.out.println(String.format(
+                    "Arrays of length %d\n" +
+                            "=================================================================\n" +
+                            "Algorithm      | %14s | %14s | %14s\n" +
+                            "Insertion sort | %14s | %14s | %14s\n" +
+                            "Quicksort      | %14s | %14s | %14s\n" +
+                            "Merge sort     | %14s | %14s | %14s\n",
+                    size,
+                    "Random", "95% sorted", "Sorted",
+                    execute(insertionSort, randomSample),
+                    execute(insertionSort, partiallySortedSample),
+                    execute(insertionSort, sortedSample),
+                    execute(quickSort, randomSample),
+                    execute(quickSort, partiallySortedSample),
+                    execute(quickSort, sortedSample),
+                    execute(mergeSort, randomSample),
+                    execute(mergeSort, partiallySortedSample),
+                    execute(mergeSort, sortedSample)
+            ));
+        }
+        else {
+            System.out.println(String.format(
+                    "Arrays of length %d\n" +
+                            "=================================================================\n" +
+                            "Algorithm      | %14s | %14s | %14s\n" +
+                            "Insertion sort | %14s | %14s | %14s\n" +
+                            "Quicksort      | %14s | %14s | %14s\n" +
+                            "Merge sort     | %14s | %14s | %14s\n",
+                    size,
+                    "Random", "95% sorted", "Sorted",
+                    "Err", "Err",
+                    execute(insertionSort, sortedSample),
+                    execute(quickSort, randomSample),
+                    execute(quickSort, partiallySortedSample),
+                    execute(quickSort, sortedSample),
+                    execute(mergeSort, randomSample),
+                    execute(mergeSort, partiallySortedSample),
+                    execute(mergeSort, sortedSample)
+            ));
+        }
 
-        System.out.println(String.format(
-                "Arrays of length %d\n" +
-                        "=================================================================\n" +
-                        "Algorithm      | %14s | %14s | %14s\n" +
-                        "Insertion sort | %14s | %14s | %14s\n" +
-                        "Quicksort      | %14s | %14s | %14s\n" +
-                        "Merge sort     | %14s | %14s | %14s\n",
-                size,
-                "Random", "95% sorted", "Sorted",
-                execute(insertionSort, randomSample),
-                execute(insertionSort, partiallySortedSample),
-                execute(insertionSort, sortedSample),
-                execute(quickSort, randomSample),
-                execute(quickSort, partiallySortedSample),
-                execute(quickSort, sortedSample),
-                execute(mergeSort, randomSample),
-                execute(mergeSort, partiallySortedSample),
-                execute(mergeSort, sortedSample)
-        ));
     }
 }
