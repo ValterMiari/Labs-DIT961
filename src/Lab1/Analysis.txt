@@ -24,4 +24,5 @@ Quicksort är den mest effektiva listan i de flesta fallen. Det vill säga; den 
 
 Under vilka omständigheter borde en viss algoritm undvikas helt och hållet?
 
-Insertion sort skall alltid undvikas om du vet att input storleken är större än ~ 2000, då den antar O(n^2) för större input, vilket kan bli extremt ineffektivt.  Detta är med förutsättningen att inputen inte är till 99% sorterad för större input, då den i det fallet har tidskomplexitet O(n) och kan vara snabbare än både Quicksort och Merge sort. Detta är förstås ett väldigt specifikt fall, men det är värt att tas upp, då förändringen av effektiviteten är väldigt mycket snabbare.
+Insertion sort skall alltid undvikas om du vet att input storleken är större än ~ 2000, då den antar O(n^2), vilket kan bli extremt ineffektivt.  Detta är med förutsättningen att inputen inte är till 99% sorterad för större input, då den i det fallet nästan alltid är snabbare än både Quicksort och Merge sort. Detta är förstås ett väldigt specifikt fall, men det är värt att tas upp,
+då förändringen av effektiviteten är väldigt mycket snabbare, på grund av Insertion sorts låga overhead, jämfört med de andra två algoritmerna.
