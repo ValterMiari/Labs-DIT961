@@ -7,6 +7,12 @@ public class Lab2 {
 	public static String pureMain(String[] commands) {
 		// TODO: declaration of two priority queues
 
+		Sellers seller = new Sellers();
+		Buyers buyer = new Buyers();
+
+		PriorityQueue<Bid> sell_pq = new PriorityQueue<>(seller);
+		PriorityQueue<Bid> buy_pq   = new PriorityQueue<>(buyer);
+
 		StringBuilder sb = new StringBuilder();
 
 		for(int line_no=0;line_no<commands.length;line_no++){

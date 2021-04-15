@@ -1,8 +1,8 @@
 package Lab2;
 
 public class Bid {
-	final public String name;
-	final public int bid;
+	final private String name;
+	final private int bid;
 
 	public Bid(String name, int bid) {
 		this.name = name;
@@ -19,12 +19,19 @@ public class Bid {
 		Bid bid = (Bid) obj;
 
 		// TODO: compare the objects
-		throw new UnsupportedOperationException();
+		return bid.hashCode() == this.hashCode();
 	}
-	
-	public String toString(){
-		// TODO: return a description of the bid
-		throw new UnsupportedOperationException();
+
+	@Override
+	public String toString() {
+		return "Bid{" +
+				"name='" + name + '\'' +
+				", bid=" + bid +
+				'}';
 	}
+
+	public String getName() { return name; }
+
+	public int getBid() { return bid; }
 }
 
