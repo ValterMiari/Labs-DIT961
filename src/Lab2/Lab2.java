@@ -6,6 +6,8 @@ import java.util.*;
 public class Lab2 {
 	public static String pureMain(String[] commands) {
 		// TODO: declaration of two priority queues
+		PriorityQueue<Bid> sell_pq = new PriorityQueue<>(new Sellers());
+		PriorityQueue<Bid> buy_pq = new PriorityQueue<>(new Buyers());
 
 		Sellers seller = new Sellers();
 		Buyers buyer = new Buyers();
@@ -36,8 +38,10 @@ public class Lab2 {
 
 			if( action.equals("K") ) {
 				// TODO: add new buy bid
+				buy_pq.add(new Bid(name, price));
 			} else if( action.equals("S") ) {
 				// TODO: add new sell bid
+				sell_pq.add(new Bid(name, price));
 			} else if( action.equals("NK") ){
 				// TODO: update existing buy bid. use parts[3].
 			} else if( action.equals("NS") ){
