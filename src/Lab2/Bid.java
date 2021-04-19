@@ -22,6 +22,11 @@ public class Bid {
 		return bid.hashCode() == this.hashCode();
 	}
 
+
+	public String getName() { return name; }
+
+	public int getBid() { return bid; }
+
 	@Override
 	public String toString() {
 		return "Bid{" +
@@ -29,9 +34,5 @@ public class Bid {
 				", bid=" + bid +
 				'}';
 	}
-
-	public String getName() { return name; }
-
-	public int getBid() { return bid; }
 }
 

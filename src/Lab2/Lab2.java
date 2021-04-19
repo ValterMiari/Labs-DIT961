@@ -9,12 +9,6 @@ public class Lab2 {
 		PriorityQueue<Bid> sell_pq = new PriorityQueue<>(new Sellers());
 		PriorityQueue<Bid> buy_pq = new PriorityQueue<>(new Buyers());
 
-		Sellers seller = new Sellers();
-		Buyers buyer = new Buyers();
-
-		PriorityQueue<Bid> sell_pq = new PriorityQueue<>(seller);
-		PriorityQueue<Bid> buy_pq   = new PriorityQueue<>(buyer);
-
 		StringBuilder sb = new StringBuilder();
 
 		for(int line_no=0;line_no<commands.length;line_no++){
@@ -44,8 +38,10 @@ public class Lab2 {
 				sell_pq.add(new Bid(name, price));
 			} else if( action.equals("NK") ){
 				// TODO: update existing buy bid. use parts[3].
+				buy_pq.change(new Bid(name, price), new Bid(name, Integer.parseInt(parts[3])));
 			} else if( action.equals("NS") ){
 				// TODO: update existing sell bid. use parts[3].
+				sell_pq.change(new Bid(name, price), new Bid(name, Integer.parseInt(parts[3])));
 			} else {
 				throw new RuntimeException(
 						"line " + line_no + ": invalid action");
@@ -60,6 +56,14 @@ public class Lab2 {
 			// the highest buyer price, then remove one bid from
 			// each priority queue and add a description of the
 			// transaction to the output.
+			Bid buyer = buy_pq.minimum();
+			Bid seller = sell_pq.minimum();
+			if (buyer.getBid() >= seller.getBid()) {
+				buy_pq.deleteMinimum();
+				sell_pq.deleteMinimum();
+				sb.append(seller.getName() + " sold to " + buyer.getName() +
+						" for the price of: " + seller.getBid() + "\n");
+			}
 		}
 
 		sb.append("Order book:\n");
@@ -67,10 +71,17 @@ public class Lab2 {
 		sb.append("Sellers: ");
 		// TODO: print remaining sellers.
 		//       can remove from priority queue until it is empty.
+		sb.append(sell_pq.sequentialOrder() + "\n");
 
 		sb.append("Buyers: ");
 		// TODO: print remaining buyers
 		//       can remove from priority queue until it is empty.
+		sb.append(buy_pq.sequentialOrder() + "\n");
+		/* for (int i = 0; i < 5; i++)
+			System.out.println(sell_pq.deleteMinimum().toString());
+		System.out.println("------------------");
+		for (int i = 0; i < 3; i++)
+			System.out.println(buy_pq.deleteMinimum().toString()); */
 
 		return sb.toString();
 	}
