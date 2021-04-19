@@ -1,7 +1,7 @@
 package Lab2;
 
 import java.util.Comparator;
-import Lab2.Bid;
+
 
 public class Sellers implements Comparator<Bid> {
 

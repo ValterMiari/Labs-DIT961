@@ -29,7 +29,7 @@ public class Bid {
 
 	@Override
 	public String toString() {
-		return "Bid{" +
+		return "Lab2.Lab2.Bid{" +
 				"name='" + name + '\'' +
 				", bid=" + bid +
 				'}';

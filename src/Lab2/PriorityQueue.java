@@ -1,7 +1,6 @@
 package Lab2;
 
 import java.util.*;
-import Lab2.Bid;
 
 // A priority queue.
 public class PriorityQueue<E> {
@@ -113,7 +112,7 @@ public class PriorityQueue<E> {
 
     @Override
     public String toString() {
-        return "PriorityQueue{" +
+        return "Lab2.PriorityQueue{" +
                 "heap=" + heap +
                 '}';
     }

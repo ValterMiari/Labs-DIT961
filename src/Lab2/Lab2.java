@@ -68,12 +68,12 @@ public class Lab2 {
 
 		sb.append("Order book:\n");
 
-		sb.append("Sellers: ");
+		sb.append("Lab2.Sellers: ");
 		// TODO: print remaining sellers.
 		//       can remove from priority queue until it is empty.
 		sb.append(sell_pq.sequentialOrder() + "\n");
 
-		sb.append("Buyers: ");
+		sb.append("Lab2.Lab2.Buyers: ");
 		// TODO: print remaining buyers
 		//       can remove from priority queue until it is empty.
 		sb.append(buy_pq.sequentialOrder() + "\n");
